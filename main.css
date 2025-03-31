@@ -33,11 +33,28 @@ a:visited {
 }
 a:hover {
     color: rgb(255, 0, 174);
-    text-decoration: underline;
     text-shadow: 10px 8px 5px;
     transition: 0.3s;
 }
 a:active {
     color: black;
     opacity: 0.5;
+}
+div.menu {
+    border: 5px solid rgb(71, 179, 8);
+    border-radius: 5px;
+    width: 240px;
+    margin: 0 auto;
+}
+div.menu:hover {
+    background-color: #ffffff30;
+    box-shadow: 0 0 15px #61365c30;
+
+}
+footer.name:hover {
+    transition: 0.5s;
+    color: rgb(255, 0, 174);
+}
+h1.menulab {
+    text-align: center;
 }

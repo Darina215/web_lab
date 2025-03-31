@@ -17,6 +17,10 @@ footer {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-style: italic;
     text-align: right;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
 }
 a {
     color: green;
@@ -57,4 +61,7 @@ footer.name:hover {
 }
 h1.menulab {
     text-align: center;
+}
+main {
+    margin: 10px 20px 40px;
 }

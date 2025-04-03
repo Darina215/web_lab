@@ -27,11 +27,14 @@
             border-radius: 10px;
             background-color: blueviolet;
             width: 100px;
+            height: 80px;
             color: green;
+            
             
         }
         h1:hover+div {
             display: block;
+
         }
         div:hover {
             border: 2px solid;
@@ -41,8 +44,11 @@
             padding: 10px;
             background-color: rgb(202, 235, 237);
             cursor: grab;
+            transition: all 3s;
+            height: 370px;
             width: 98%;
-            transition: 1s;
+            overflow: hidden;
+            
             
         }
         div.dop2 div {
@@ -61,6 +67,7 @@
             border-radius: 10px;
             background-color: rgb(54, 149, 221);
             width: 150px;
+            height: 80px;
             color: rgb(238, 242, 117);
             margin-top: 10px;
         }
@@ -72,7 +79,11 @@
             color: rgb(254, 254, 251);
             margin-top: 10px;
             display: inline-block;
-            transition: 1s;
+            transition: all 2s ease;
+            height: 450px;
+            overflow: hidden;
+
+            
         }
         .choice:hover+div {
             display: block;
@@ -93,6 +104,7 @@
             border-radius: 30px;
             background-color: rgb(212, 155, 210);
             width: 200px;
+            height: 80px;
             color: rgb(150, 9, 145);
             margin-top: 10px;
         }
@@ -101,9 +113,10 @@
             border-radius: 10px;
             background-color: rgb(220, 244, 122);
             width: 98%;
+            height: 350px;
             color: rgb(66, 176, 29);
             margin-top: 10px;
-            transition: 1.5s;
+            transition: all 1.5s;
         }
         .step:hover+div {
             display: block;
@@ -127,6 +140,7 @@
             border-radius: 20px;
             background-color: rgb(139, 207, 169);
             width: 250px;
+            height: 80px;
             color: rgb(9, 75, 150);
             margin-top: 10px;
         }
@@ -135,9 +149,10 @@
             border-radius: 10px;
             background-color: rgb(131, 188, 200);
             width: 98%;
+            height: 220px;
             color: rgb(224, 73, 27);
             margin-top: 10px;
-            transition: 2s;
+            transition: all 2s;
         }
         div.dop5 div {
             text-indent: 1cm;
@@ -145,29 +160,35 @@
             display: none;
         }
         .ill {
-            color: black;
+            color: black;    
+            
         }
         .ill:hover {
             color: beige;
         }
         .ill:hover+div {
             display: block;
+            text-align: center;
         }
         .dop5 {
             border: 1px solid;
             border-radius: 20px;
             background-color: rgb(98, 32, 81);
             width: 300px;
+            height: 80px;
             margin-top: 10px;
+            
         }
-        .dop5:hover {
+        .dop5:hover{
             border: 3px solid;
             border-radius: 30px;
             background-color: rgb(99, 177, 139);
             width: 98%;
+            height: 330px;
             color: rgb(66, 27, 224);
             margin-top: 10px;
-            transition: 2s;
+            transition: all 4s;
+
         }
 
     </style>

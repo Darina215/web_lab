@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редкачева.Позиционирование</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <style>
+        div {
+            width: 350px;
+            height: 80px;
+            border: 1px dashed rgb(240, 231, 101);
+            border-width: 3px;
+            background-color: rgb(227, 175, 244);
+            position: relative;
+            margin: 20px;
+            line-height: 80px;
+            text-align: center;
+            z-index: 1;
+
+        }
+        .position_relative {
+            position: relative;
+            left: 150px;
+            top: -153px;
+            z-index: -1;
+        }
+        .absolute_position {
+            position: absolute;
+            left: 300px;
+            transition: height 1s ease-in-out 1.5s, width 1s ease-in-out 1.5s, box-shadow 1s ease-in-out 1.5s;
+        }
+        .absolute_position:hover {
+            box-shadow: 10px 5px 5px rgb(146, 153, 88);
+            width: 400px;
+            height: 100px;
+            transition: height 1.5s ease-in-out 0.3s, width 1.5s ease-in-out 0.3s, box-shadow 1.5s ease-in-out 0.5s;
+
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        ФБ, НГТУ, Лабораторная работа 4, Позиционирование
+    </header>
+    <main>
+        <div>static</div>
+        <div>static</div>
+        <div class="position_relative">relative</div>
+        <div>static</div>
+        <div>static</div>
+        <div class="absolute_position">absolute</div>
+        <div>static</div>
+        <div>static</div>
+        <div>static</div>
+        <div>static</div>
+    </main>
+    <footer>
+        &copy; Редкачева Дарина, ФБИ-32, 2025
+    </footer>
+</body>
+</html>

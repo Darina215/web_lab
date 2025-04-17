@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редкачева. Теги</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <style>
+        footer, header {
+            z-index: 100;
+        }
+        main {
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+        .tag-cloud {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+        }
+        .tag {
+            position: absolute;
+        }
+        .tag1 {
+            font-size: 60px; 
+            color: #ff5733; 
+            transform: rotate(15deg);
+            left: 50px;
+            z-index: 0;
+        }
+        .tag2 {
+            font-size: 200px;
+            color: #33ff57; 
+            transform: rotate(-10deg);
+            left: 200px;
+            top: 100px;
+            z-index: -1;
+        }
+        .tag3 {
+            font-size: 100px; 
+            color: #3357ff; 
+            transform: rotate(20deg);
+            left: 500px;
+            top: 400px;
+            z-index: 3;
+        }
+        .tag4 {
+            font-size: 30px; 
+            color: #f0db4f; 
+            transform: rotate(80deg);
+            left: 400px;
+            top: 20px;
+        }
+        .tag5 {
+            font-size: 40px; 
+            color: #61dafb; 
+            transform: rotate(5deg);
+            left: 200px;
+            top: 300px;
+        }
+        .tag6 {
+            font-size: 180px; 
+            color: #ff69b4; 
+            transform: rotate(30deg);
+            left: 700px;
+            top: 110px;
+        }
+        .tag7 {
+            font-size: 40px; 
+            color: #9b59b6; 
+            transform: rotate(-15deg);
+            left: 20px;
+            top: 500px;
+        }
+        .tag8 {
+            font-size: 23px; 
+            color: #eb730a; 
+            transform: rotate(10deg);
+            left: 800px;
+            top: 50px;
+        }
+        .tag9 {
+            font-size: 50px; 
+            color: #2ecc71; 
+            transform: rotate(-8deg);
+            left: 1100px;
+            top: 20px;
+        }
+        .tag10 {
+            font-size: 60px; 
+            color: #e74c3c; 
+            transform: rotate(-28deg);
+            left: 700px;
+            top: 500px;
+        }
+        .tag11 {
+            font-size: 100px; 
+            color: #3498db; 
+            transform: rotate(-12deg);
+            left: 450px;
+            top: 150px;
+        }
+        .tag12 {
+            font-size: 24px; 
+            color: #c0392b; 
+            transform: rotate(-20deg);
+            left: 10px;
+            top: 300px;
+        }
+        .tag13 {
+            font-size: 28px; 
+            color: #8e44ad; 
+            transform: rotate(7deg);
+            left: 100px;
+            top: 100px;
+        }
+        .tag14 {
+            font-size: 40px; 
+            color: #d35400; 
+            transform: rotate(-15deg);
+            left: 300px;
+            top: 400px;
+        }
+        .tag15 {
+            font-size: 80px; 
+            color: #f39c12; 
+            transform: rotate(0deg);
+            left: 520px;
+            top: 250px;
+        }
+        .tag:hover~.tag15 {
+            transform: scale(1.5);
+            text-shadow: 0px 0px 20px rgba(173, 20, 137, 0.7);
+            z-index: 10;
+            animation-play-state: paused;
+            font-size: 200px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        ФБ, НГТУ, Лабораторная работа 4, Теги
+    </header>
+    <main>
+        <div class="tag-cloud">
+            <div class="tag tag1">HTML</div>
+            <div class="tag tag2">CSS</div>
+            <div class="tag tag3">JavaScript</div>
+            <div class="tag tag4">React</div>
+            <div class="tag tag5">Node.js</div>
+            <div class="tag tag6">Python</div>
+            <div class="tag tag7">Java</div>
+            <div class="tag tag8">PHP</div>
+            <div class="tag tag9">Ruby</div>
+            <div class="tag tag10">C#</div>
+            <div class="tag tag11">Perl</div>
+            <div class="tag tag12">Swift</div>
+            <div class="tag tag13">Go</div>
+            <div class="tag tag14">Kotlin</div>
+            <div class="tag tag15">Django</div>
+        </div>
+    </main>
+    <footer>
+        &copy; Редкачева Дарина, ФБИ-32, 2025
+    </footer>
+</body>
+</html>

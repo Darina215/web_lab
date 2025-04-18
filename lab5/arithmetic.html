@@ -15,7 +15,14 @@
             let result = a + b;
             alert('Сумма ' + a + ' и ' + b + ' равна ' + result);
         }
-        
+        function snowAutor() {
+            let autor = 'Автор страницы:\nРедкачева Дарина';
+            alert(autor);
+        }
+        function snowFooter() {
+            let s_footer = 'Друзья! А что лица у всех такие грустные? \nДоброе утро! Сегодня прекрасный день.';
+            alert(s_footer);
+        }
     </script>
     <style>
         .message {
@@ -29,17 +36,20 @@
             font-size: 30px;
             cursor: pointer;
         }
+        .s_footer {
+            cursor: help;
+        }
     </style>
 </head>
 <body>
-    <header>
+    <header onclick="snowAutor()">
         ФБ, НГТУ, Лабораторная работа 5
     </header>
     <main>
         <div class="message" onclick="snowSum()">Сколько будет 5154+7891?</div>
-        <div class="message">Узнать, кто автор страницы</div>
+        <div class="message" onclick="snowAutor()">Узнать, кто автор страницы</div>
     </main>
-    <footer>
+    <footer class="s_footer" ondblclick="snowFooter()">
         &copy; Редкачева Дарина, ФБИ-32, 2025
     </footer>
 </body>

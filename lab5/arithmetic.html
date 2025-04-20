@@ -42,7 +42,40 @@
             let result = a * b;
             alert('Произведение ' + a + ' и ' + b + ' равно ' + result);
         }
-
+        function snowDiv() {
+            let inputA = document.getElementById('numberA');
+            let inputB = document.getElementById('numberB');
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputB.value);
+            if (b == 0) {
+                alert('На ноль делить нельзя!!!!!!');
+                inputB.focus();
+                inputB.select();
+                inputB.style.color = 'red';
+                inputB.style.borderColor = 'red';
+                return;
+            }
+            if (isNaN(a)) {
+                alert('Введите число в первое поле');
+                inputA.focus();
+                inputA.select();
+                inputA.style.color = 'red';
+                inputA.style.borderColor = 'red';
+                return;
+            }
+            if (isNaN(b)) {
+                alert('Введите число во второе поле');
+                inputB.focus();
+                inputB.select();
+                inputB.style.color = 'red';
+                inputB.style.borderColor = 'red';
+                return;
+            }
+            inputB.style.color = '';
+            inputB.style.borderColor = '';
+            let result = a/b;
+            alert(a + ' / ' + b + ' = ' + result);
+        }
     </script>
     <style>
         .message {
@@ -71,6 +104,7 @@
         <div class="message" onclick="snowSum()">Найти сумму чисел</div>
         <div class="message" onclick="snowDiff()">Найти разность чисел</div>
         <div class="message" onclick="snowMult()">Найти произведение чисел</div>
+        <div class="message" onclick="snowDiv()">Найти отношение чисел</div>
         <div class="message" onclick="snowAutor()">Узнать, кто автор страницы</div>
     </main>
     <footer class="s_footer" ondblclick="snowFooter()">

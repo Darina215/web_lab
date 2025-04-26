@@ -24,11 +24,17 @@
             document.getElementById('contrastOutput').innerText = value;
             document.getElementById('contrastImage').style.filter = 'contrast(' + value + ')';
         }
-        function contrastChange() {
-            let value = document.getElementById('contrastValue').value + '%';
-            document.getElementById('contrastOutput').innerText = value;
-            document.getElementById('contrastImage').style.filter = 'contrast(' + value + ')';
+        function grayChange() {
+            let value = document.getElementById('grayValue').value + '%';
+            document.getElementById('grayOutput').innerText = value;
+            document.getElementById('grayImage').style.filter = 'grayscale(' + value + ')';
         }
+        function hueChange() {
+            let value = document.getElementById('hueValue').value + '°';
+            document.getElementById('hueOutput').innerText = value;
+            document.getElementById('hueImage').style.filter = 'hue-rotate(' + value + ')';
+        }
+        
     </script>
     <style>
         div {
@@ -38,7 +44,7 @@
 </head>
 <body>
     <header>
-        ФБ, НГТУ, Лабораторная работа 5
+        ФБ, НГТУ, Лабораторная работа 5, Фильтры
     </header>
     <main>
         <div>
@@ -64,9 +70,14 @@
             <input type="range" min="0" max="100" value="0" onchange="grayChange()" id="grayValue">
             <span id="grayOutput"></span>
         </div>
-        <div><img src="3.jfif" id="blurImage" style="width: 400px; height: 400px;"></div>
+        <div><img src="3.jfif" id="grayImage" style="width: 400px; height: 400px;"></div>
+        <div>
+            Фильтр hue-rotate:
+            <input type="range" min="0" max="360" value="0" onchange="hueChange()" id="hueValue">
+            <span id="hueOutput"></span>
+        </div>
+        <div><img src="4.jfif" id="hueImage" style="width: 400px; height: 400px;"></div>
 
-        <div><img src="4.jfif" id="blurImage" style="width: 400px; height: 400px;"></div>
         <div><img src="5.jfif" id="blurImage" style="width: 400px; height: 400px;"></div>
         <div><img src="6.jfif" id="blurImage" style="width: 400px; height: 400px;"></div>
         <div><img src="7.jfif" id="blurImage" style="width: 400px; height: 400px;"></div>

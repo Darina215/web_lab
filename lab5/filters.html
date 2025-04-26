@@ -34,7 +34,12 @@
             document.getElementById('hueOutput').innerText = value;
             document.getElementById('hueImage').style.filter = 'hue-rotate(' + value + ')';
         }
-        
+        function invertChange() {
+            let value = document.getElementById('invertValue').value + '%';
+            document.getElementById('invertOutput').innerText = value;
+            document.getElementById('invertImage').style.filter = 'invert(' + value + ')';
+        }
+
     </script>
     <style>
         div {
@@ -53,24 +58,28 @@
             <span id="blurOutput"></span>
         </div>
         <div><img src="Пушистик6.jfif" id="blurImage" style="width: 400px; height: 400px;"></div>
+
         <div>
             Фильтр brightness:
             <input type="range" min="0" max="500" value="0" onchange="brightChange()" id="brightValue">
             <span id="brightOutput"></span>
         </div>
         <div><img src="1.jfif" id="brightImage" style="width: 400px; height: 400px;"></div>
+        
         <div>
             Фильтр contrast:
             <input type="range" min="0" max="500" value="0" onchange="contrastChange()" id="contrastValue">
             <span id="contrastOutput"></span>
         </div>
         <div><img src="2.jfif" id="contrastImage" style="width: 400px; height: 400px;"></div>
+    
         <div>
             Фильтр grayscale:
             <input type="range" min="0" max="100" value="0" onchange="grayChange()" id="grayValue">
             <span id="grayOutput"></span>
         </div>
         <div><img src="3.jfif" id="grayImage" style="width: 400px; height: 400px;"></div>
+
         <div>
             Фильтр hue-rotate:
             <input type="range" min="0" max="360" value="0" onchange="hueChange()" id="hueValue">
@@ -78,7 +87,14 @@
         </div>
         <div><img src="4.jfif" id="hueImage" style="width: 400px; height: 400px;"></div>
 
-        <div><img src="5.jfif" id="blurImage" style="width: 400px; height: 400px;"></div>
+        <div>
+            Фильтр invert:
+            <input type="range" min="0" max="100" value="0" onchange="invertChange()" id="invertValue">
+            <span id="invertOutput"></span>
+        </div>
+        <div><img src="5.jfif" id="invertImage" style="width: 400px; height: 400px;"></div>
+
+
         <div><img src="6.jfif" id="blurImage" style="width: 400px; height: 400px;"></div>
         <div><img src="7.jfif" id="blurImage" style="width: 400px; height: 400px;"></div>
     </main>

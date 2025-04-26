@@ -14,6 +14,11 @@
             document.getElementById('blurOutput').innerText = value;
             document.getElementById('blurImage').style.filter = 'blur(' + value + ')';
         }
+        function brightChange() {
+            let value = document.getElementById('brightValue').value + '%';
+            document.getElementById('brightOutput').innerText = value;
+            document.getElementById('brightImage').style.filter = 'brightness(' + value + ')';
+        }
     </script>
     <style>
         div {
@@ -31,7 +36,24 @@
             <input type="range" min="0" max="20" value="0" onchange="blurChange()" id="blurValue">
             <span id="blurOutput"></span>
         </div>
-        <div><img src="Пушистик6.jfif" id="blurImage"></div>
+        <div><img src="Пушистик6.jfif" id="blurImage" style="width: 400px; height: 400px;"></div>
+        <div>
+            Фильтр brightness:
+            <input type="range" min="0%" max="500%" value="0" onchange="brightChange()" id="brightValue">
+            <span id="brightOutput"></span>
+        </div>
+        <div><img src="1.jfif" id="brightImage" style="width: 400px; height: 400px;"></div>
+        <div>
+            Фильтр contrast:
+            <input type="range" min="0" max="20" value="0" onchange="contrastChange()" id="blurValue">
+            <span id="blurOutput"></span>
+        </div>
+        <div><img src="2.jfif" id="blurImage" style="width: 400px; height: 400px;"></div>
+        <div><img src="3.jfif" id="blurImage" style="width: 400px; height: 400px;"></div>
+        <div><img src="4.jfif" id="blurImage" style="width: 400px; height: 400px;"></div>
+        <div><img src="5.jfif" id="blurImage" style="width: 400px; height: 400px;"></div>
+        <div><img src="6.jfif" id="blurImage" style="width: 400px; height: 400px;"></div>
+        <div><img src="7.jfif" id="blurImage" style="width: 400px; height: 400px;"></div>
     </main>
     <footer>
         &copy; Редкачева Дарина, ФБИ-32, 2025

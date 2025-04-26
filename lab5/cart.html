@@ -8,12 +8,206 @@
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <link rel="icon" href="../favicon-16x16.png">
     <link rel="icon" href="../favicon-32x32.png">
+    <script>
+        function Ssum() {
+            let inputA = document.getElementById('numberA');
+            let inputB = document.getElementById('numberB');
+            let inputC = document.getElementById('numberC');
+            let inputD = document.getElementById('numberD');
+            let inputE = document.getElementById('numberE');
+            
+            let a = 76990 * parseInt(inputA.value);
+            let b = 71990 * parseInt(inputB.value);
+            let c = 45990 * parseInt(inputC.value);
+            let d = 11990 * parseInt(inputD.value);
+            let e = 2990 * parseInt(inputE.value);
+
+            if (isNaN(a)) {
+                alert('Введите число в поле');
+                inputA.focus();
+                inputA.select();
+                inputA.style.color = 'red';
+                inputA.style.borderColor = 'red';
+                return;
+            }
+            if (a < 0) {
+                alert('Введите положительное число');
+                inputA.focus();
+                inputA.select();
+                inputA.style.color = 'red';
+                inputA.style.borderColor = 'red';
+                return;
+            }
+            if (isNaN(b)) {
+                alert('Введите число в поле');
+                inputB.focus();
+                inputB.select();
+                inputB.style.color = 'red';
+                inputB.style.borderColor = 'red';
+                return;
+            }
+            if (b < 0) {
+                alert('Введите положительное число');
+                inputB.focus();
+                inputB.select();
+                inputB.style.color = 'red';
+                inputB.style.borderColor = 'red';
+                return;
+            }
+            if (isNaN(c)) {
+                alert('Введите число в поле');
+                inputC.focus();
+                inputC.select();
+                inputC.style.color = 'red';
+                inputC.style.borderColor = 'red';
+                return;
+            }
+            if (c < 0) {
+                alert('Введите положительное число');
+                inputC.focus();
+                inputC.select();
+                inputC.style.color = 'red';
+                inputC.style.borderColor = 'red';
+                return;
+            }
+            if (isNaN(d)) {
+                alert('Введите число в поле');
+                inputD.focus();
+                inputD.select();
+                inputD.style.color = 'red';
+                inputD.style.borderColor = 'red';
+                return;
+            }
+            if (d < 0) {
+                alert('Введите положительное число');
+                inputD.focus();
+                inputD.select();
+                inputD.style.color = 'red';
+                inputD.style.borderColor = 'red';
+                return;
+            }
+            if (isNaN(e)) {
+                alert('Введите число в поле');
+                inputE.focus();
+                inputE.select();
+                inputE.style.color = 'red';
+                inputE.style.borderColor = 'red';
+                return;
+            }
+            if (e < 0) {
+                alert('Введите положительное число');
+                inputE.focus();
+                inputE.select();
+                inputE.style.color = 'red';
+                inputE.style.borderColor = 'red';
+                return;
+            }
+            inputA.style.color = '';
+            inputA.style.borderColor = '';
+            inputB.style.color = '';
+            inputB.style.borderColor = '';
+            inputC.style.color = '';
+            inputC.style.borderColor = '';
+            inputD.style.color = '';
+            inputD.style.borderColor = '';
+            inputE.style.color = '';
+            inputE.style.borderColor = '';
+
+            let total = a + b + c + d + e; 
+        
+            document.getElementById("output").innerText = "Итого: " + total + " руб.";
+           
+        }
+        function Clear() {
+            let inputA = document.getElementById('numberA');
+            let inputB = document.getElementById('numberB');
+            let inputC = document.getElementById('numberC');
+            let inputD = document.getElementById('numberD');
+            let inputE = document.getElementById('numberE');
+
+            inputA.value = '';
+            inputB.value = '';
+            inputC.value = '';
+            inputD.value = '';
+            inputE.value = '';
+
+            inputA.style.color = '';
+            inputA.style.borderColor = '';
+            inputB.style.color = '';
+            inputB.style.borderColor = '';
+            inputC.style.color = '';
+            inputC.style.borderColor = '';
+            inputD.style.color = '';
+            inputD.style.borderColor = '';
+            inputE.style.color = '';
+            inputE.style.borderColor = '';
+
+            document.getElementById("output").innerText = "Итого: ";
+        }
+
+    </script>
+    <style>
+        .cart {
+            color: rgb(0, 0, 0);
+            font-size: bold;
+            border: 2px double black;
+            border-radius: 20px;
+            padding: auto;
+            margin: 50px auto;
+            width: 420px;
+            height: 400px;
+            text-align: center;
+            box-shadow: 3px 3px 3px rgb(132, 131, 131);
+            background-color: rgb(230, 242, 195);
+
+        }
+        .name {
+            margin-bottom: 5px;
+        }
+        .buttonStyle {
+            margin-top: 20px;
+            color: rgb(23, 25, 25);
+            background-color: rgb(233, 160, 213);
+        }
+        #output {
+            text-align: left;
+            margin-top: 10px;
+            color: rgb(29, 2, 54);
+            text-shadow: 2px 2px 2px rgb(104, 6, 113);
+        }
+        h1 {
+            color: rgb(87, 72, 101);
+        }
+
+    </style>
 </head>
 <body>
     <header>
-        ФБ, НГТУ, Лабораторная работа 5
+        ФБ, НГТУ, Лабораторная работа 5, Корзина
     </header>
     <main>
+        <div class="cart">
+            <h1>Корзина</h1>
+            <label for="numberA">iPhone 16 Plus 128 Gb (76 990р/шт)</label><br>
+            <input type="number" class="name" min="0" placeholder="Введите количество" id="numberA"><br>
+
+            <label for="numberB">MacBook Air 2020 13" М1 8Gb/256Gb (71 990р шт)</label><br>
+            <input type="number" class="name" min="0" placeholder="Введите количество" id="numberB"><br>
+
+            <label for="numberC">iPad 2022 Wi-Fi 256Gb(45 990р/шт)</label><br>
+            <input type="number" class="name" min="0" placeholder="Введите количество" id="numberC"><br>
+
+            <label for="numberD">AirPods (2024) 4-го поколения(11 990р/шт)</label><br>
+            <input type="number" class="name" min="0" placeholder="Введите количество" id="numberD"><br>
+
+            <label for="numberE">Силиконовый чехол MagSafe для iPhone 16 Plus(2 990р/шт)</label><br>
+            <input type="number" class="name" min="0" placeholder="Введите количество" id="numberE"><br>
+
+            <input type="button" value="Расчитать стоимость" class="buttonStyle" onclick="Ssum()">
+            <input type="button" value="Очистить корзину" class="buttonStyle" onclick="Clear()">
+
+            <div id="output"></div>
+        </div>
     </main>
     <footer>
         &copy; Редкачева Дарина, ФБИ-32, 2025

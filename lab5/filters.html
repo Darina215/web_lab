@@ -30,7 +30,7 @@
             document.getElementById('grayImage').style.filter = 'grayscale(' + value + ')';
         }
         function hueChange() {
-            let value = document.getElementById('hueValue').value + '°';
+            let value = document.getElementById('hueValue').value + 'deg';
             document.getElementById('hueOutput').innerText = value;
             document.getElementById('hueImage').style.filter = 'hue-rotate(' + value + ')';
         }
@@ -105,10 +105,10 @@
 
         <div>
             Фильтр saturate:
-            <input type="range" min="0" max="500" value="0" onchange="saturateChange()" id="saturateValue">
+            <input type="range" min="0" max="500" value="100" onchange="saturateChange()" id="saturateValue">
             <span id="saturateOutput"></span>
         </div>
-        <div><img src="6.jfif" id="sarurateImage" style="width: 400px; height: 400px;"></div>
+        <div><img src="6.jfif" id="saturateImage" style="width: 400px; height: 400px;"></div>
 
         <div>
             Фильтр sepia:

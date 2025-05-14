@@ -31,6 +31,23 @@
             
             out.innerHTML = dateOutput;
         }
+        function changeColors() {
+            const header = document.getElementsByTagName('header')[0];
+            const rgb = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+            header.style.color = rgb;
+        }
+        let timerNum;
+        function startChangeColors() {
+            changeColors();
+            timerNum = setInterval(changeColors, 2000);
+            document.getElementById('start-btn').disabled = true;
+            document.getElementById('stop-btn').disabled = false;
+        }
+        function stopChangeColors() {
+            clearInterval(timerNum);
+            document.getElementById('stop-btn').disabled = true; 
+            document.getElementById('start-btn').disabled = false;
+        }
     </script> 
     <style>
         .dateFormat {
@@ -40,6 +57,9 @@
             margin: 5px;
             text-shadow: 3px 3px 3px #F2DDC6;
         }
+        header {
+            transition: color 0.9s;
+        }
     </style>
 </head>
 <body onload="showDate()">
@@ -48,6 +68,10 @@
     </header>
     <main>
         <div id="current-date"></div>
+        <div>
+            <button onclick="startChangeColors()" id="start-btn">Старт</button>
+            <button onclick="stopChangeColors()" disabled id="stop-btn">Стоп</button>
+        </div>
     </main>
     <footer>
         &copy; Редкачева Дарина, ФБИ-32, 2025

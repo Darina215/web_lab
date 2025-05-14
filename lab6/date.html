@@ -31,6 +31,22 @@
             
             out.innerHTML = dateOutput;
         }
+        function updateDate() {
+            showDate(); 
+        }
+
+        function startUpdatingDate() {
+            updateDate(); 
+            updateTimer = setInterval(updateDate, 2000); 
+            document.getElementById('start-update-btn').disabled = true;
+            document.getElementById('stop-update-btn').disabled = false;
+        }
+
+        function stopUpdatingDate() {
+            clearInterval(updateTimer); 
+            document.getElementById('stop-update-btn').disabled = true;
+            document.getElementById('start-update-btn').disabled = false;
+        }
         function changeColors() {
             const header = document.getElementsByTagName('header')[0];
             const rgb = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
@@ -68,6 +84,10 @@
     </header>
     <main>
         <div id="current-date"></div>
+        <div>
+            <button onclick="startUpdatingDate()" id="start-update-btn">Обновить время</button>
+            <button onclick="stopUpdatingDate()" disabled id="stop-update-btn">Остановить обновление времени</button>
+        </div>
         <div>
             <button onclick="startChangeColors()" id="start-btn">Старт</button>
             <button onclick="stopChangeColors()" disabled id="stop-btn">Стоп</button>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редкачева Дарина. Лабораторная 6</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <script>
+        function showDate() {
+            let out = document.getElementById('current-date');
+            let today = new Date()
+            let locales = [
+                { locale: 'en-US', description: 'США' },
+                { locale: 'fr', description: 'Франция' },
+                { locale: 'fi-FI', description: 'Финляндия' },
+                { locale: 'ja-JP', description: 'Япония' },
+                { locale: 'cs', description: 'Чехия' }
+            ];
+            
+            let dateOutput = '';
+            
+                locales.forEach(locale => {
+                    dateOutput +=`<div class="dateFormat">
+                                    <span class="localeName">${locale.description}:</span>
+                                    ${today.toLocaleString(locale.locale)}
+                                </div>`;;
+                });
+            
+            out.innerHTML = dateOutput;
+        }
+        function updateDate() {
+            showDate(); 
+        }
+
+        function startUpdatingDate() {
+            updateDate(); 
+            updateTimer = setInterval(updateDate, 2000); 
+            document.getElementById('start-update-btn').disabled = true;
+            document.getElementById('stop-update-btn').disabled = false;
+        }
+
+        function stopUpdatingDate() {
+            clearInterval(updateTimer); 
+            document.getElementById('stop-update-btn').disabled = true;
+            document.getElementById('start-update-btn').disabled = false;
+        }
+        function changeColors() {
+            const header = document.getElementsByTagName('header')[0];
+            const rgb = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+            header.style.color = rgb;
+        }
+        let timerNum;
+        function startChangeColors() {
+            changeColors();
+            timerNum = setInterval(changeColors, 2000);
+            document.getElementById('start-btn').disabled = true;
+            document.getElementById('stop-btn').disabled = false;
+        }
+        function stopChangeColors() {
+            clearInterval(timerNum);
+            document.getElementById('stop-btn').disabled = true; 
+            document.getElementById('start-btn').disabled = false;
+        }
+    </script> 
+    <style>
+        .dateFormat {
+            font-size: 30px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            color: #B39F7A;
+            margin: 5px;
+            text-shadow: 3px 3px 3px #F2DDC6;
+        }
+        header {
+            transition: color 0.9s;
+        }
+    </style>
+</head>
+<body onload="showDate()">
+    <header>
+        ФБ, НГТУ, Лабораторная работа 6, Дата-время
+    </header>
+    <main>
+        <div id="current-date"></div>
+        <div>
+            <button onclick="startUpdatingDate()" id="start-update-btn">Обновить время</button>
+            <button onclick="stopUpdatingDate()" disabled id="stop-update-btn">Остановить обновление времени</button>
+        </div>
+        <div>
+            <button onclick="startChangeColors()" id="start-btn">Старт</button>
+            <button onclick="stopChangeColors()" disabled id="stop-btn">Стоп</button>
+        </div>
+    </main>
+    <footer>
+        &copy; Редкачева Дарина, ФБИ-32, 2025
+    </footer>
+</body>
+</html>

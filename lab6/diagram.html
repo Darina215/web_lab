@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редкачева Дарина. Лабораторная 6</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <style>
+        #diag {
+            display: flex;
+            align-items: flex-end; 
+            flex-direction: row;
+            border: 1px solid #ccc; 
+            padding: 10px;
+            background: #f9f9f9;
+            
+        }
+        .bar {
+            width: 150px; 
+            height: 500px;
+            background-color: steelblue;
+            margin: 10px;
+            transition: 0.7s;
+            border-radius: 25px 25px 0 0;
+            
+        }
+    </style>
+    <script>
+        function showDiagram() {
+            let data = [100, 26, 42, 20, 90, 76, 88, 50, 33, 66];
+            let bars = document.getElementsByClassName('bar');
+            let colors = ['#FFD1DC', '#EFA94A', '#7FB5B5', '#A1859', '#77DD77', '#FF8C69', '#BEBD7F', '#AFDAFC', '#E4717A', '#E7C697']
+            const diagHeight = document.getElementById('diag').clientHeight; // Изменено на высоту
+            const maxData = Math.max(...data);
+            const k = diagHeight / maxData * 0.9;
+            for(let i = 0; i < data.length; i++) {
+                bars[i].style.height = k*data[i] + 'px';
+                bars[i].style.backgroundColor = colors[i % colors.length];
+                bars[i].textContent = data[i];
+                bars[i].style.textAlign = 'center';
+                bars[i].style.color = 'white';
+                bars[i].style.lineHeight = bars[i].style.height;
+            }
+        }
+    </script>
+</head>
+<body onload="showDiagram()">
+    <header>
+        ФБ, НГТУ, Лабораторная работа 6, Диаграмма
+    </header>
+    <main>
+        <div id="diag">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+
+    </main>
+    <footer>
+        &copy; Редкачева Дарина, ФБИ-32, 2025
+    </footer>
+</body>
+</html>

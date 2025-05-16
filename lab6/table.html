@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редкачева Дарина. Лабораторная 6</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <style>
+        #mtable {
+            border: 3px double;
+            background-color: antiquewhite;
+            padding: 10px;
+            width: 200px;
+            text-align: center;
+            box-shadow: 3px 3px 3px rgb(20, 84, 20);
+            margin: 10px;
+        }
+        lable {
+            margin: 10px;
+        }
+        button {
+            margin: 10px;
+            background-color: rgb(103, 241, 119);
+            color: rgb(238, 233, 237);
+            width: 230px;
+            background-color: green;
+
+        }
+    </style>
+    <script>
+        function showMultipleTable() {
+            const num = parseInt(document.getElementById('num').value);
+            let start = parseInt(document.getElementById('start').value);
+            let end = parseInt(document.getElementById('end').value);
+            if(isNaN(num) || isNaN(start) || isNaN(end)) {
+                alert("Заполните пустые поля!");
+                return;
+            }
+            if(start > end) {
+                [start, end] = [end, start];
+            }
+
+            let tbl = document.getElementById('mtable');
+            tbl.innerHTML = '<h1>Таблица умножения</h1>';
+            for (let i = start; i <= end; i++) {
+                tbl.innerHTML += `<div>${i} * ${num} = ${i * num}</div>`;
+            }
+        }
+
+        showMultipleTable(); 
+    </script>
+</head>
+<body onload="showMultipleTable()">
+    <header>
+        ФБ, НГТУ, Лабораторная работа 6, Таблица умножения
+    </header>
+    <main>
+        <div id="mtable"></div>
+        <div>
+            <lable>Умножить на: <input type="number" id="num" value="7"></lable>
+            <label>Начать с: <input type="number" id="start" value="1"></label>
+            <label>Закончить на: <input type="number" id="end" value="10"></label><br>
+
+            <button onclick="showMultipleTable()">Таблица</button>
+        </div>
+    </main>
+    <footer>
+        &copy; Редкачева Дарина, ФБИ-32, 2025
+    </footer>
+</body>
+</html>

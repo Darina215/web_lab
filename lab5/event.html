@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редкачева Дарина. Лабораторная 5</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <style>
+        #block {
+            width: 150px;
+            height: 150px;
+            background-color: rgb(240, 248, 255);
+            border: 2px solid rgb(18, 199, 15);
+            cursor: crosshair;
+            padding: 5px;
+        }
+    </style>
+    <script>
+        function showCoords() {
+            let x = this.event.x;
+            let y = this.event.y;
+            let div = document.getElementById('block');
+            div.innerHTML = '<b>x</b> = ' + x + 'px<br><b>y</b> = ' + y + 'px';
+
+            if (this.event.ctrlKey) {
+                div.style.color = 'red';
+                div.innerHTML += '<br>Нажата клавиша Ctrl';
+                div.style.backgroundColor = 'pink';
+                div.style.border = '3px double #ce2029';
+                div.style.boxShadow = '3px 3px 3px gray'
+            } 
+            else if (this.event.altKey) {
+                div.style.color = 'black';
+                div.innerHTML += "<br>Нажата клавиша Alt"; 
+                div.style.border = '3px dashed #004d66';
+                div.style.backgroundColor = '#bde0ff';
+                div.style.boxShadow = '3px 3px 5px black'
+            }
+            else if (this.event.shiftKey) {
+                div.style.color = 'white';
+                div.innerHTML += "<br>Нажата клавиша Shift";
+                div.style.border = '2px solid violet';
+                div.style.backgroundColor = '#ffb6ad';
+                div.style.boxShadow = '5px 3px 3px #cc3333';
+            }
+            else {
+                div.style.color = 'green';
+                div.style.backgroundColor = 'rgb(240, 248, 255)';
+                div.style.border = '2px solid rgb(18, 199, 15)';
+                div.style.boxShadow = 'none';
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        ФБ, НГТУ, Лабораторная работа 5, Объект "Событие"
+    </header>
+    <main>
+        <div id="block" onmousemove="showCoords()"></div>
+    </main>
+    <footer>
+        &copy; Редкачева Дарина, ФБИ-32, 2025
+    </footer>
+</body>
+</html>

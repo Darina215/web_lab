@@ -10,8 +10,11 @@
     <link rel="icon" href="../favicon-32x32.png">
     <script>
         function snowSum() {
-            let a = 5154;
-            let b = 7891;
+            let inputA = document.getElementById('numberA');
+            let inputB = document.getElementById('numberB');
+
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputB.value);
             let result = a + b;
             alert('Сумма ' + a + ' и ' + b + ' равна ' + result);
         }
@@ -23,6 +26,101 @@
             let s_footer = 'Друзья! А что лица у всех такие грустные? \nДоброе утро! Сегодня прекрасный день.';
             alert(s_footer);
         }
+        function snowDiff() {
+            let inputA = document.getElementById('numberA');
+            let inputB = document.getElementById('numberB');
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputB.value);
+            let result = a - b;
+            alert('Разность ' + a + ' и ' + b + ' равна ' + result);
+        }
+        function snowMult() {
+            let inputA = document.getElementById('numberA');
+            let inputB = document.getElementById('numberB');
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputB.value);
+            let result = a * b;
+            alert('Произведение ' + a + ' и ' + b + ' равно ' + result);
+        }
+        function snowDiv() {
+            let inputA = document.getElementById('numberA');
+            let inputB = document.getElementById('numberB');
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputB.value);
+            if (b == 0) {
+                alert('На ноль делить нельзя!!!!!!');
+                inputB.focus();
+                inputB.select();
+                inputB.style.color = 'red';
+                inputB.style.borderColor = 'red';
+                return;
+            }
+            if (isNaN(a)) {
+                alert('Введите число в первое поле');
+                inputA.focus();
+                inputA.select();
+                inputA.style.color = 'red';
+                inputA.style.borderColor = 'red';
+                return;
+            }
+            if (isNaN(b)) {
+                alert('Введите число во второе поле');
+                inputB.focus();
+                inputB.select();
+                inputB.style.color = 'red';
+                inputB.style.borderColor = 'red';
+                return;
+            }
+            inputB.style.color = '';
+            inputB.style.borderColor = '';
+            let result = a/b;
+            alert(a + ' / ' + b + ' = ' + result);
+        }
+        function snowDegree() {
+            let inputA = document.getElementById('numberA');
+            let inputB = document.getElementById('numberB');
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputB.value);
+    
+            if (a == 0 && b == 0) {
+                alert('Ошибка! Введите число');
+                inputB.focus();
+                inputB.select();
+                inputB.style.color = 'red';
+                inputB.style.borderColor = 'red';
+                return;
+            }
+            if (isNaN(a)) {
+                alert('Введите число в первое поле');
+                inputA.focus();
+                inputA.select();
+                inputA.style.color = 'red';
+                inputA.style.borderColor = 'red';
+                return;
+            }
+            if (isNaN(b)) {
+                alert('Введите число во второе поле');
+                inputB.focus();
+                inputB.select();
+                inputB.style.color = 'red';
+                inputB.style.borderColor = 'red';
+                return;
+            }
+            inputB.style.color = '';
+            inputB.style.borderColor = '';
+            let result = a ** b;
+            alert(a + ' в степени ' + b + ' = ' + result);
+        }
+        function changeOutput (buttomNum, backColor, textColor, bord, bordR, bordW) {
+            let output = document.getElementById('output');
+            output.innerHTML = 'Нажата кнопка ' + buttomNum;
+            output.style.backgroundColor = backColor;
+            output.style.color = textColor;
+            output.style.border = bord;
+            output.style.borderRadius = bordR;
+            output.style.borderWidth = bordW;
+        }
+        
     </script>
     <style>
         .message {
@@ -39,6 +137,11 @@
         .s_footer {
             cursor: help;
         }
+        #output {
+            border: 1px solid;
+            width: 300px;
+            height: 40px;
+        }
     </style>
 </head>
 <body>
@@ -46,8 +149,22 @@
         ФБ, НГТУ, Лабораторная работа 5
     </header>
     <main>
-        <div class="message" onclick="snowSum()">Сколько будет 5154+7891?</div>
+        <label>Первое число: <input type="number" value="5154" id="numberA"></label><br>
+        <label>Второе число: <input type="number" value="7891" id="numberB"></label><br>
+        <div class="message" onclick="snowSum()">Найти сумму чисел</div>
+        <div class="message" onclick="snowDiff()">Найти разность чисел</div>
+        <div class="message" onclick="snowMult()">Найти произведение чисел</div>
+        <div class="message" onclick="snowDiv()">Найти отношение чисел</div>
+        <div class="message" onclick="snowDegree()">Найти результат возведения в степень</div>
         <div class="message" onclick="snowAutor()">Узнать, кто автор страницы</div>
+
+        <div>
+            <input type="button" value="Кнопка 1" onclick="changeOutput(1, 'purple', 'white', 'dotted', '15px', '3px')">
+            <input type="button" value="Кнопка 2" onclick="changeOutput(2, 'pink', 'purple', 'dashed', '10px', '2px')">
+            <input type="button" value="Кнопка 3" onclick="changeOutput(3, '#20B2AA', '#DDA0DD', 'double', '15px', '5px')">
+            <input type="button" value="Кнопка 4" onclick="changeOutput(4, '#FFB6C1', '#20B2AA', 'dotted', '10px', '2px')">
+        </div>
+        <div id="output"></div>
     </main>
     <footer class="s_footer" ondblclick="snowFooter()">
         &copy; Редкачева Дарина, ФБИ-32, 2025

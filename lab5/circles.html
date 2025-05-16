@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редкачева Дарина. Круги</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <script>
+        function CloseCircle(element) {
+            element.style.opacity = "0";
+        }
+        function ResetCircle() {
+            document.getElementById("1k").style.opacity = "1";
+            document.getElementById("2k").style.opacity = "1";
+            document.getElementById("3k").style.opacity = "1";
+            document.getElementById("4k").style.opacity = "1";
+            document.getElementById("5k").style.opacity = "1";
+            document.getElementById("6k").style.opacity = "1";
+            document.getElementById("7k").style.opacity = "1";
+            document.getElementById("8k").style.opacity = "1";
+            document.getElementById("9k").style.opacity = "1";
+            document.getElementById("10k").style.opacity = "1";
+        }
+    </script>
+
+    <style>
+        div {
+            padding: 10px;
+            border: 2px solid black;
+            border-radius: 50%;
+            margin: 20px auto;
+            width: 70px;
+            height: 70px;
+            justify-content: center;
+            color: white;
+            font-size: 50px;
+            position: absolute;
+            cursor: pointer;
+            transition: 0.7s;
+            display: flex;
+        }
+        button {
+            position: fixed;
+            left: 20px;
+            padding: 10px 20px;
+            color: green;
+            font-size: 15pt;
+            border: 2px solid rgb(220, 17, 224);
+            border-radius: 15px;
+            box-shadow: 3px 3px 3px rgba(79, 79, 94, 0.536);
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        ФБ, НГТУ, Лабораторная работа 5, Круги
+    </header>
+    <main>
+        <div id="1k" style="left: 100px; top: 100px; background-color: aqua;" onclick="CloseCircle(this)">1</div>
+        <div id="2k" style="left: 200px; top: 450px; background-color: rgb(123, 104, 201);" onclick="CloseCircle(this)">2</div>
+        <div id="3k" style="left: 400px; top: 100px; background-color: rgb(204, 109, 227);" onclick="CloseCircle(this)">3</div>
+        <div id="4k" style="left: 500px; top: 400px; background-color: rgb(233, 21, 138);" onclick="CloseCircle(this)">4</div>
+        <div id="5k" style="left: 80%; top: 200px; background-color: rgb(229, 129, 66);" onclick="CloseCircle(this)">5</div>
+        <div id="6k" style="left: 70%; top: 400px; background-color: rgb(15, 163, 25);" onclick="CloseCircle(this)">6</div>
+        <div id="7k" style="left: 60%; top: 300px; background-color: rgb(230, 58, 15);" onclick="CloseCircle(this)">7</div>
+        <div id="8k" style="left: 65%; top: 50px; background-color: rgb(160, 138, 175);" onclick="CloseCircle(this)">8</div>
+        <div id="9k" style="left: 80px; top: 300px; background-color: rgb(152, 3, 100);" onclick="CloseCircle(this)">9</div>
+        <div id="10k" style="left: 55%; top: 200px; background-color: rgb(120, 184, 233);" onclick="CloseCircle(this)">10</div>
+        <button id="reset" onclick="ResetCircle()">Сброс</button>
+    </main>
+    <footer>
+        &copy; Редкачева Дарина, ФБИ-32, 2025
+    </footer>
+</body>
+</html>

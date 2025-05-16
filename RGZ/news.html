@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Новости ТГК-2</title>
+    <link rel="stylesheet" href="rgz.css">
+    <script defer src="menu.js"></script>
+    <script>
+        function toggleFullText(button) {
+            const card = button.closest('.news-card');
+            const fullText = card.querySelector('.full-text');
+            const isHidden = fullText.style.maxHeight === '0px' || fullText.style.maxHeight === '';
+    
+            // Скрыть все тексты и сбросить кнопки
+            document.querySelectorAll('.news-card').forEach(el => {
+                const ft = el.querySelector('.full-text');
+                ft.style.maxHeight = '0px';
+                ft.style.paddingTop = '0';
+                ft.style.paddingBottom = '0';
+                el.querySelector('button').textContent = 'Показать';
+            });
+    
+            // Показать выбранный, если он был скрыт
+            if (isHidden) {
+                fullText.style.maxHeight = fullText.scrollHeight + 'px';
+                fullText.style.paddingTop = '0.5rem';
+                fullText.style.paddingBottom = '0.5rem';
+                button.textContent = 'Скрыть';
+            }
+        }
+    </script>
+        <style>
+            .news-container {
+                margin-right: 220px;
+                padding: 2rem;
+                max-width: 1200px;
+            }
+            .news-card {
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                padding: 1rem;
+                margin-bottom: 20px;
+                background-color: #fff;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            }
+            .news-card h3 {
+                margin: 0 0 0.5rem;
+            }
+            .news-card .date {
+                font-size: 0.9em;
+                color: orange;
+                margin-bottom: 0.5rem;
+            }
+            .news-card p {
+                margin-bottom: 0.5rem;
+            }
+            .news-card .full-text {
+                overflow: hidden;
+                max-height: 0px;
+                transition: max-height 0.4s ease, padding 0.3s ease;
+                color: #333;
+            }
+            .news-card button {
+                background-color: #0074D9;
+                color: white;
+                border: none;
+                padding: 8px 12px;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            .news-card button:hover {
+                background-color: #005fa3;
+            }
+        </style>
+
+</head>
+<body>
+
+<nav class="sidebar">
+    <a href="about.html">О компании</a>
+    <a href="news.html" class="active">Новости</a>
+    <a href="currency.html">Курс валют</a>
+    <a href="contacts.html">Контакты</a>
+    <a href="video.html">Видео</a>
+</nav>
+
+<div class="news-container">
+    <h1>Новости ПАО «ТГК-2»</h1>
+
+    <div class="news-card">
+        <div class="date">15.05.2025</div>
+        <h3>О сроках гидравлических испытаний тепловых сетей</h3>
+        <p>ПАО «ТГК-2» информирует о переносе сроков проведения гидравлических испытаний и плановых ремонтов 
+            тепловых сетей от Костромской ТЭЦ-1...
+        </p>
+        <div class="full-text">
+            ПАО «ТГК-2» информирует о сроках проведения гидравлических испытаний тепловых 
+            сетей в связи с окончанием отопительного сезона. ПАО «ТГК-2» информирует о переносе срока проведения 
+            гидравлических испытаний и плановых ремонтов тепловых сетей от Костромской ТЭЦ-1.
+        </div>
+        <button onclick="toggleFullText(this)">Показать</button>
+    </div>
+
+    <div class="news-card">
+        <div class="date">12.05.2025</div>
+        <h3>Перенос сроков испытаний в связи с отопительным сезоном</h3>
+        <p>В связи с продлением отопительного периода ПАО «ТГК-2» информирует жителей Костромы о переносе сроков 
+            проведения ежегодных гидравлических испытаний...</p>
+        <div class="full-text">
+            В связи с продлением отопительного периода ПАО «ТГК-2» информирует жителей Костромы 
+            о переносе сроков проведения ежегодных гидравлических испытаний магистральных тепловых сетей для обнаружения у
+            течек и их последующего устранения в период ремонта.
+        </div>
+        <button onclick="toggleFullText(this)">Показать</button>
+    </div>
+    <div class="news-card">
+        <div class="date">06.05.2025</div>
+        <h3>Патриотический мурал ко Дню Победы в Ярославле</h3>
+        <p>Завершено художественное оформление мурала к 80-летию Победы на заборе Ярославской ТЭЦ-1...</p>
+        <div class="full-text">
+            ПАО «ТГК-2» при поддержке Правительства Ярославской области и Дворца молодежи 
+            завершили реализацию патриотического проекта. Работники ТЭЦ-1 совместно со школьниками, сузами и 
+            вузами оформили масштабный мурал «Ярославль – город трудовой доблести».
+        </div>
+        <button onclick="toggleFullText(this)">Показать</button>
+    </div>
+
+    <div class="news-card">
+        <div class="date">30.04.2025</div>
+        <h3>Испытания и ремонты тепловых сетей Костромы</h3>
+        <p>ПАО «ТГК-2» информирует жителей Костромы о сроках ежегодных гидравлических испытаний и ремонтов...</p>
+        <div class="full-text">
+            Испытания — плановое мероприятие для проверки прочности труб. В это время горячее 
+            водоснабжение будет отключено. Давление воды увеличивается до 1,25 от рабочего значения.
+        </div>
+        <button onclick="toggleFullText(this)">Показать</button>
+    </div>
+
+    <div class="news-card">
+        <div class="date">29.04.2025</div>
+        <h3>Как рассчитывается плата за горячую воду</h3>
+        <p>ПАО «ТГК-2» опубликовало памятку о начислении платы за горячее водоснабжение...</p>
+        <div class="full-text">
+            Памятка поможет жителям понимать механизм расчета, контролировать 
+            расходы и своевременно оплачивать коммунальные услуги.
+        </div>
+        <button onclick="toggleFullText(this)">Показать</button>
+    </div>
+
+    <div class="news-card">
+        <div class="date">29.04.2025</div>
+        <h3>Северодвинская ТЭЦ-2 — лидер по охране труда</h3>
+        <p>Северодвинская ТЭЦ-2 стала победителем городского смотра-конкурса в номинации по охране труда...</p>
+        <div class="full-text">
+            В рамках Всемирного дня охраны труда предприятие получило признание за 
+            лучшие практики среди производственных организаций численностью 100–250 человек.
+        </div>
+        <button onclick="toggleFullText(this)">Показать</button>
+    </div>
+
+    <div class="news-card">
+        <div class="date">28.04.2025</div>
+        <h3>Ремонт трубопровода от Костромской ТЭЦ-1</h3>
+        <p>29 апреля ПАО «ТГК-2» проведёт ремонт магистрального трубопровода в Костроме...</p>
+        <div class="full-text">
+            Ремонт пройдет на улице Катушечной с 09:15 до 15:15. В этот 
+            период будет временно отключено теплоснабжение по ряду адресов.
+        </div>
+        <button onclick="toggleFullText(this)">Показать</button>
+    </div>
+
+    <div class="news-card">
+        <div class="date">26.04.2025</div>
+        <h3>Возобновление отопления в Ярославле</h3>
+        <p>ПАО «ТГК-2» сообщает о включении отопления в Ярославле в соответствии с постановлением мэра...</p>
+        <div class="full-text">
+            Энергетики приступили к поэтапной настройке системы теплоснабжения. 
+            В районах города процесс займёт несколько дней, особенно в Красноперекопском и Фрунзенском районах.
+        </div>
+        <button onclick="toggleFullText(this)">Показать</button>
+    </div>
+
+    <div class="news-card">
+        <div class="date">25.04.2025</div>
+        <h3>Ремонт тепловой сети в Архангельске</h3>
+        <p>28 апреля Архангельские тепловые сети проведут ремонт трубопровода в районе улицы Садовой...</p>
+        <div class="full-text">
+            Ограничения затронут потребителей на улицах Садовая, Вологодская, Ломоносова, проспектах Троицкий, 
+            Советских Космонавтов, Новгородский и др.
+        </div>
+        <button onclick="toggleFullText(this)">Показать</button>
+    </div>
+
+    <div class="news-card">
+        <div class="date">25.04.2025</div>
+        <h3>70 лет Вологодской ТЭЦ</h3>
+        <p>Вологодская ТЭЦ отметила 70-летие с момента запуска первой очереди в 1955 году...</p>
+        <div class="full-text">
+            История станции началась в 1953 году. Сегодня она остаётся основным
+             источником тепловой и электрической энергии для Вологды. В 2005 году вошла в состав ПАО «ТГК-2».
+            </div>
+        <button onclick="toggleFullText(this)">Показать</button>
+    </div>
+
+    <a href="#" class="back-to-top">↑</a>
+</div>
+
+</body>
+</html>

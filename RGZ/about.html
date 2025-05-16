@@ -2,54 +2,110 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>О компании</title>
+    <title>О компании ТГК-2</title>
     <link rel="stylesheet" href="rgz.css">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon-16x16.png">
     <link rel="icon" href="favicon-32x32.png">
+    <script defer src="menu.js"></script>
+    <style>
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .gallery-item {
+            width: 35%;
+            text-align: center;
+        }
+        .gallery img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+        .gallery-caption {
+            margin-top: 10px;
+            font-size: 0.95em;
+            color: #555;
+        }
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            animation: zoomFade 10s ease-in-out infinite alternate;
+            z-index: -100;
+            position: relative;
+            width: 100vw;
+            margin-left: calc(-1 * (100vw - 100%) / 2);
+            overflow: hidden;
+            max-height: 400px;
+        }
+        @keyframes zoomFade {
+            0% {
+                transform: scale(1);
+                filter: brightness(100%);
+            }
+            100% {
+                transform: scale(1.1);
+                filter: brightness(90%);
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <img src="tgk-edited-free (carve.photos).png" width="9%">
-        О компании:
-    </header>
     <main>
-        <div>
-            Публичное акционерное общество <b>«Территориальная генерирующая компания №2» (ПАО «ТГК-2»)</b> создано в апреле 
-            <i>2005</i> года. ПАО «ТГК-2» является одной из крупнейших тqеплоэнергетических компаний Северо-Западного и Центрального 
-            федеральных округов России. ПАО «ТГК-2» занимается производством электрической и тепловой энергии и реализацией тепла
-            (пара и горячей воды) потребителям. Предприятия компании расположены в Архангельской, Вологодской, Костромской, 
-            Новгородской и Ярославской областях РФ.
-        </div>
-        <div>
-            <img src="somedata.jpg" width="40%">
-        </div>
-        <div>
+        <nav class="sidebar">
+            <a href="about.html">О компании</a>
+            <a href="news.html">Новости</a>
+            <a href="currency.html">Курс валют</a>
+            <a href="contacts.html">Контакты</a>
+            <a href="video.html">Видео</a>
+        </nav>
+        <img src="about.jpg" alt="Электростанция ТГК-2" class="hero-image">
+        <div class="content">
+            </div>
+            <h1>Территориальная генерирующая компания №2</h1>
+            <div>
+                Публичное акционерное общество «Территориальная генерирующая компания №2» (ПАО «ТГК-2») создано в 
+                апреле 2005 года. ПАО «ТГК-2» является одной из крупнейших теплоэнергетических компаний Северо-Западного и 
+                Центрального федеральных округов России. ПАО «ТГК-2» занимается производством электрической и тепловой 
+                энергии и реализацией тепла (пара и горячей воды) потребителям. Предприятия компании расположены в 
+                Архангельской, Вологодской, Костромской, Новгородской и Ярославской областях РФ.
+            </div>
+            <h2>Миссия ПАО «ТГК-2»</h2>
+            <div>
+                Содействие социально-экономическому развитию регионов через надежное и бесперебойное снабжение 
+                тепловой и электрической энергией. Мы работаем на благосостояние и интересы наших акционеров, 
+                потребителей, работников, партнеров и общества.
+            </div>
+
+            <h2>Производственная мощность</h2>
+            <img src="таблица.PNG"" style="margin-left: 100px;">
+
             <h2>Производственные активы ТГК-2 включают в себя:</h2>
-            <ol>
+            <ul>
                 <li>11 ТЭЦ</li>
                 <li>5 котельных</li>
                 <li>4 предприятия тепловых сетей</li>
-            </ol>
-        </div>
-        <div>
-            <img src="employess.jpeg" width="10%" height="10%"><div>Численность сотрудников компании: около 5000 специалистов</div>
-        </div>
-       
-        <h2>Миссия ПАО «ТГК-2»</h2>
-        <div>
-            Содействие социально-экономическому развитию регионов через надежное и бесперебойное снабжение 
-            <u>тепловой и электрической энергией</u>. Мы работаем на благосостояние и интересы наших акционеров, 
-            потребителей, работников, партнеров и общества.
-        </div>
-        <h2>Стратегическая цель ПАО «ТГК-2»</h2>
-        <div>
-            Рост капитализации и инвестиционной привлекательности компании.
+            </ul>
+
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="people.jpg" alt="Команда ТГК-2">
+                    <div class="gallery-caption">Инженерный коллектив компании</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="scale_1200.jfif" alt="Карта ТГК-2" style="height: 333px; width: 600px;">
+                    <div class="gallery-caption" style="margin-left: 170px;">Карта «ТГК-2»</div>
+                </div>
+            </div>
+            <a href="#" class="back-to-top">↑</a>
         </div>
     </main>
-    <footer>
-        &copy; ПАО "ТГК-2", 2025
-    </footer>
 </body>
 </html>

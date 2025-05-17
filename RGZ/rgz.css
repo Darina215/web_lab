@@ -1,5 +1,5 @@
 body {
-    margin: 20px;
+    margin: 0;
     font-family: 'Segoe UI', sans-serif;
     background-color: #f9f9f9;
 }
@@ -52,4 +52,19 @@ nav.sidebar a.active {
     padding: 10px;
     border-radius: 50%;
     text-decoration: none;
+}
+footer {
+    margin-right: 200px; 
+    background-color: #f1f1f1; 
+    text-align: center; 
+    font-size: 0.9em; 
+    color: #555; 
+    padding: 1rem 2rem; 
+    margin-top: 40px;
+}
+h1 {
+    color: #004f77;
+}
+h2 {
+    color: #004080;
 }

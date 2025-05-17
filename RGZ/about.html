@@ -18,6 +18,7 @@
         .gallery-item {
             width: 35%;
             text-align: center;
+            margin-left: 50px;
         }
         .gallery img {
             width: 100%;
@@ -55,6 +56,20 @@
                 filter: brightness(90%);
             }
         }
+        .bloks {
+            display: flex; 
+            gap: 20px; 
+            margin-top: 40px; 
+            flex-wrap: wrap;
+        }
+        .blok-style {
+            flex: 1 1 300px; 
+            background-color: #f0f4f8; 
+            padding: 20px; 
+            border-radius: 10px; 
+            text-align: center; 
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
     </style>
 </head>
 <body>
@@ -68,8 +83,10 @@
         </nav>
         <img src="about.jpg" alt="Электростанция ТГК-2" class="hero-image">
         <div class="content">
-            </div>
-            <h1>Территориальная генерирующая компания №2</h1>
+            <img src="tgk-edited-free (carve.photos).png" style="width: 15%; vertical-align: middle; margin: 0 0 15px 15px;">
+            <h1 style="display: inline-block; vertical-align: middle;">Территориальная генерирующая
+                компания №2
+            </h1>
             <div>
                 Публичное акционерное общество «Территориальная генерирующая компания №2» (ПАО «ТГК-2») создано в 
                 апреле 2005 года. ПАО «ТГК-2» является одной из крупнейших теплоэнергетических компаний Северо-Западного и 
@@ -77,13 +94,22 @@
                 энергии и реализацией тепла (пара и горячей воды) потребителям. Предприятия компании расположены в 
                 Архангельской, Вологодской, Костромской, Новгородской и Ярославской областях РФ.
             </div>
+            <div class="bloks">
+                <div class="blok-style">
+                    <div style="font-size: 2rem; font-weight: bold; color: #003366;">2 232,56 МВт</div>
+                    <div style="margin-top: 10px; font-size: 0.95rem; color: #D2691E;">Общая установленная электрическая мощность</div>
+                </div>
+                <div class="blok-style">
+                    <div style="font-size: 2rem; font-weight: bold; color: #003366;">8 520,52 Гкал/ч</div>
+                    <div style="margin-top: 10px; font-size: 0.95rem; color: #D2691E;">Общая установленная тепловая мощность</div>
+                </div>
+            </div>
             <h2>Миссия ПАО «ТГК-2»</h2>
             <div>
                 Содействие социально-экономическому развитию регионов через надежное и бесперебойное снабжение 
                 тепловой и электрической энергией. Мы работаем на благосостояние и интересы наших акционеров, 
                 потребителей, работников, партнеров и общества.
             </div>
-
             <h2>Производственная мощность</h2>
             <img src="таблица.PNG"" style="margin-left: 100px;">
 
@@ -100,12 +126,16 @@
                     <div class="gallery-caption">Инженерный коллектив компании</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="scale_1200.jfif" alt="Карта ТГК-2" style="height: 333px; width: 600px;">
-                    <div class="gallery-caption" style="margin-left: 170px;">Карта «ТГК-2»</div>
+                    <img src="scale_1200.jfif" alt="Карта ТГК-2" style="height: 275px; width: 500px;;">
+                    <div class="gallery-caption" style="margin-left: 150px;">Карта «ТГК-2»</div>
                 </div>
             </div>
             <a href="#" class="back-to-top">↑</a>
         </div>
     </main>
+    <footer>
+        &copy; ПАО «ТГК-2». Все материалы взяты с официального сайта компании: 
+        <a href="https://tgc-2.ru/about/" target="_blank">www.tgk-2.ru</a>
+    </footer>
 </body>
 </html>

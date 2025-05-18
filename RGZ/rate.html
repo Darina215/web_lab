@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Курс валют - PLN</title>
+  <link rel="stylesheet" href="rgz.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://www.cbr-xml-daily.ru/money.js"></script>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon-16x16.png">
+  <link rel="icon" href="favicon-32x32.png">
+  <script defer src="menu.js"></script>
+  <style>
+    .currency-container {
+      margin-right: 220px;
+      padding: 2rem;
+      max-width: 1000px;
+    }
+    label {
+      font-weight: bold;
+    }
+    input,
+    select,
+    button {
+      padding: 0.5rem;
+      margin: 0.5rem 0;
+    }
+    .result {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      color: #004080;
+    }
+    #chart-container {
+      margin-top: 3rem;
+    }
+    #today-rate {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+  </style>
+  
+  <script>
+    async function fetchRates() {
+      const res = await fetch('https://www.cbr-xml-daily.ru/latest.js');
+      const text = await res.text();
+      const data = JSON.parse(text);
+      fx.rates = data.rates;
+      fx.base = data.base;
+      const plnRate = fx.rates.PLN;
+      const today = new Date().toLocaleDateString('ru-RU');
+      document.getElementById('today-rate').innerText = `Курс PLN на сегодня (${today}): ${plnRate.toFixed(4)} RUB`;
+    }
+
+    async function convertCurrency() {
+      const amount = parseFloat(document.getElementById('amount').value);
+      const direction = document.getElementById('direction').value;
+      let result = 0;
+
+      if (direction === 'rub-to-pln') {
+        result = fx(amount).from("RUB").to("PLN");
+      } else {
+        result = fx(amount).from("PLN").to("RUB");
+      }
+
+      document.getElementById('conversionResult').innerText = `Результат: ${result.toFixed(2)}`;
+    }
+
+    async function loadChart() {
+      const dates = [
+        "2025-04-16", "2025-04-17", "2025-04-18", "2025-04-19", "2025-04-20",
+        "2025-04-21", "2025-04-22", "2025-04-23", "2025-04-24", "2025-04-25",
+        "2025-04-26", "2025-04-27", "2025-04-28", "2025-04-29", "2025-04-30",
+        "2025-05-01", "2025-05-02", "2025-05-03", "2025-05-04", "2025-05-05",
+        "2025-05-06", "2025-05-07", "2025-05-08", "2025-05-09", "2025-05-10",
+        "2025-05-11", "2025-05-12", "2025-05-13", "2025-05-14", "2025-05-15"
+      ];
+
+      const values = [
+        0.0425, 0.0426, 0.0428, 0.0430, 0.0431,
+        0.0432, 0.0433, 0.0431, 0.0430, 0.0429,
+        0.0427, 0.0428, 0.0429, 0.0427, 0.0426,
+        0.0424, 0.0425, 0.0428, 0.0427, 0.0429,
+        0.0430, 0.0433, 0.0431, 0.0432, 0.0433,
+        0.0434, 0.0435, 0.0431, 0.0433, 0.0436
+      ];
+
+      const ctx = document.getElementById("rateChart").getContext("2d");
+      const chart = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: dates,
+          datasets: [
+            {
+              label: "Курс PLN по дням",
+              data: values,
+              backgroundColor: dates.map(() => '#0074D9')
+            }
+          ]
+        },
+        options: {
+          plugins: {
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  const value = context.raw;
+                  return `Курс: ${value}`;
+                }
+              }
+            }
+          },
+          onClick: (e, elements) => {
+            if (elements.length > 0) {
+              const index = elements[0].index;
+              chart.data.datasets[0].backgroundColor = dates.map((_, i) => i === index ? '#FF851B' : '#0074D9');
+              chart.update();
+              document.getElementById("selected-info").innerText = `Дата: ${dates[index]}, курс: ${values[index]}`;
+            }
+          },
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: false
+            }
+          }
+        }
+      });
+    }
+
+    window.onload = async () => {
+      await fetchRates();
+      await loadChart();
+      document.getElementById("convertButton").addEventListener("click", convertCurrency);
+    };
+  </script>
+</head>
+<body>
+  <nav class="sidebar">
+    <a href="about.html">О компании</a>
+    <a href="news.html">Новости</a>
+    <a href="currency.html" class="active">Курс валют</a>
+    <a href="contacts.html">Контакты</a>
+    <a href="video.html">Видео</a>
+  </nav>
+
+  <main class="currency-container">
+    <h1>Курс валют (польский злотый — PLN)</h1>
+
+    <div id="today-rate">Загрузка актуального курса...</div>
+
+    <div>
+      <label>Введите сумму:</label><br />
+      <input type="number" id="amount" placeholder="Введите сумму" />
+      <select id="direction">
+        <option value="rub-to-pln">Из рублей в PLN</option>
+        <option value="pln-to-rub">Из PLN в рубли</option>
+      </select>
+      <br />
+      <button id="convertButton">Перевести</button>
+      <div class="result" id="conversionResult"></div>
+    </div>
+
+    <div id="chart-container">
+      <canvas id="rateChart" height="100"></canvas>
+      <div id="selected-info" class="result"></div>
+    </div>
+  </main>
+</body>
+</html>
+
+
+

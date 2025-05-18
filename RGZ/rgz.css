@@ -47,7 +47,7 @@ nav.sidebar a.active {
     position: fixed;
     bottom: 20px;
     right: 220px;
-    background: #0074D9;
+    background: orange;
     color: white;
     padding: 10px;
     border-radius: 50%;

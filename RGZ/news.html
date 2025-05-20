@@ -14,7 +14,6 @@
             const fullText = card.querySelector('.full-text');
             const isHidden = fullText.style.maxHeight === '0px' || fullText.style.maxHeight === '';
     
-            // Скрыть все тексты и сбросить кнопки
             document.querySelectorAll('.news-card').forEach(el => {
                 const ft = el.querySelector('.full-text');
                 ft.style.maxHeight = '0px';
@@ -22,8 +21,7 @@
                 ft.style.paddingBottom = '0';
                 el.querySelector('button').textContent = 'Показать';
             });
-    
-            // Показать выбранный, если он был скрыт
+
             if (isHidden) {
                 fullText.style.maxHeight = fullText.scrollHeight + 'px';
                 fullText.style.paddingTop = '0.5rem';

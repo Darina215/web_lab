@@ -8,11 +8,55 @@
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <link rel="icon" href="../favicon-16x16.png">
     <link rel="icon" href="../favicon-32x32.png">
+    <script src="dollar-data.js"></script>
     <script>
         function showExchange() {
-            const exchange = [51.6094, 51.9208, 51.6245, 52.0840, 52.4304, 52.2463, 53.0719, 52.2861, 52.3055, 52.8629];
+            let table = document.getElementById('dollar-table');
+            for(let i = 0; i < exchange.length; i++) {
+                let tr = document.createElement('tr');
+                let td = document.createElement('td');
+                td.innerHTML = exchange[i];
+                tr.appendChild(td);
+                table.appendChild(tr);
+            }
+            let sum = 0;
+            for(let i = 0; i < exchange.length; i++) {
+                sum += exchange[i];
+            }
+            let average = sum / exchange.length;
+            average = average.toFixed(2);
+
+            let detail = document.getElementById('detail');
+            detail.innerText = 'Среднее значение: ' + average;
+
+            let button = document.querySelector('button');
+            button.style.display = 'none';
         }
     </script>
+    <style>
+        #dollar-table, th, td {
+            border: 2px solid #5D9B9B;
+        }
+        td {
+            padding: 5px 10px;
+            text-align: center;
+            font-size: 1rem;
+            color: #E4717A;
+            background-color: aliceblue;
+        }
+        #detail {
+            color: #E4717A;
+            margin-top: 10px;
+            font-size: 20px;
+        }
+        button {
+            border: 2px solid #FF9BAA;
+            background-color: #F2DDC6;
+            color: #E4717A;
+            font-size: 20px;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -21,6 +65,7 @@
     <main>
         <button onclick="showExchange()">Курс доллара</button>
         <table border="1" id="dollar-table"></table>
+        <div id="detail"></div>
     </main>
     <footer>
         &copy; Редкачева Дарина, ФБИ-32, 2025

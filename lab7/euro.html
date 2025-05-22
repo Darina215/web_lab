@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редкачева Дарина. Лабораторная 6</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <script>
+        function getEuroExschangeRate() {
+            const url = "https://www.cbr-xml-daily.ru/daily_json.js";
+            fetch(url)
+                .then(function(response) {
+                return response.json(); 
+                })
+                .then(function(json) {
+                const todayRate = json.Valute.EUR.Value;
+                const previousRate = json.Valute.EUR.Previous;
+                const date = json.Date.slice(0, 10); 
+
+                let diff = (todayRate - previousRate).toFixed(4);
+                let trend = "";
+
+                if (diff > 0) {
+                    trend = `<span style="color: green;">курс вырос на ${diff} ₽</span>`;
+                } else if (diff < 0) {
+                    trend = `<span style="color: red;">курс упал на ${Math.abs(diff)} ₽</span>`;
+                } else {
+                    trend = `<span>курс не изменился</span>`;
+                }
+
+                const output = `
+                    <h2>Курс евро</h2>
+                    <p><strong>Дата:</strong> ${date}</p>
+                    <p><strong>Текущий курс:</strong> ${todayRate.toFixed(4)} ₽</p>
+                    <p><strong>Вчерашний курс:</strong> ${previousRate.toFixed(4)} ₽</p>
+                    <p>${trend}</p>
+                `;
+
+                document.getElementById("result").innerHTML = output;
+
+                event.target.style.display = "none";
+                })
+            .catch(function(error) {
+            document.getElementById("result").innerHTML = "Произошла ошибка при получении данных.";
+            console.error("Ошибка:", error);
+            });
+        }
+    </script>
+</head>
+<body>
+    <header>
+        ФБ, НГТУ, Лабораторная работа 6, Курс евро €
+    </header>
+    <main>
+        <button onclick="getEuroExschangeRate()"></button>
+        <div id="result" style="margin-top: 20px; padding: 10px; border: 1px solid gray;"></div>
+        <p style="margin-top: 10px;">
+            <a href="https://www.cbr-xml-daily.ru/" target="_blank">Курсы валют, API</a>
+        </p>
+    </main>
+    <footer>
+        &copy; Редкачева Дарина, ФБИ-32, 2025
+    </footer>
+</body>
+</html>

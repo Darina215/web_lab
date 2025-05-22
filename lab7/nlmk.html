@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редкачева Дарина. Лабораторная 6</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <script>
+        const dates = ["21.05.2025", "20.05.2025", "19.05.2025", "16.05.2025", "15.05.2025", "14.05.2025", 
+                    "13.05.2025", "12.05.2025", "08.05.2025", "07.05.2025"];
+        const prices = [123.60, 124.10, 128.54, 125.74, 126.18, 128.86, 129.64, 130.56, 127.00, 126.48];
+    
+        function showStockData() {
+          const table = document.getElementById("stock-table");
+          for (let i = 0; i < dates.length; i++) {
+            const row = document.createElement("tr");
+    
+            const cellDate = document.createElement("td");
+            cellDate.textContent = dates[i];
+    
+            const cellPrice = document.createElement("td");
+            cellPrice.textContent = prices[i].toFixed(2);
+    
+            const cellDiff = document.createElement("td");
+            if (i === 0) {
+              cellDiff.textContent = "—";
+            } else {
+              const diff = prices[i] - prices[i - 1];
+              cellDiff.textContent = diff.toFixed(2);
+              if (diff > 0) cellDiff.style.color = "green";
+              else if (diff < 0) cellDiff.style.color = "red";
+            }
+    
+            row.appendChild(cellDate);
+            row.appendChild(cellPrice);
+            row.appendChild(cellDiff);
+            table.appendChild(row);
+          }
+    
+          const sum = prices.reduce((a, b) => a + b, 0);
+          const avg = (sum / prices.length).toFixed(2);
+          const max = Math.max(...prices).toFixed(2);
+          const min = Math.min(...prices).toFixed(2);
+    
+          document.getElementById("summary").innerHTML = `
+            <p>Средняя цена: <b>${avg}</b> ₽</p>
+            <p>Максимальная цена: <b>${max}</b> ₽</p>
+            <p>Минимальная цена: <b>${min}</b> ₽</p>
+          `;
+    
+          event.target.style.display = "none";
+        }
+      </script>
+      <style>
+        #summary, td, th {
+            color: #8B0000;
+        }
+        table {
+            background-color: #FFD1DC;
+        }
+      </style>
+</head>
+<body>
+    <header>
+        ФБ, НГТУ, Лабораторная работа 6, Котировки акций
+    </header>
+    <main>
+        <button onclick="showStockData()">Курс акций НЛМК</button>
+        <table id="stock-table" border="1">
+          <tr>
+            <th>Дата</th>
+            <th>Цена (₽)</th>
+            <th>Разница</th>
+          </tr>
+        </table>
+        <div id="summary"></div>
+    </main>
+    <footer>
+        &copy; Редкачева Дарина, ФБИ-32, 2025
+    </footer>
+</body>
+</html>

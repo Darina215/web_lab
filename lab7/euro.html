@@ -41,22 +41,35 @@
 
                 document.getElementById("result").innerHTML = output;
 
-                event.target.style.display = "none";
                 })
-            .catch(function(error) {
-            document.getElementById("result").innerHTML = "Произошла ошибка при получении данных.";
-            console.error("Ошибка:", error);
-            });
+                event.target.style.display = "none";
         }
     </script>
+    <style>
+        button {
+            border: 2px solid #ACB78E;
+            border-radius: 10px;
+            color: white;
+            background-color: gray;
+            
+        }
+        #result {
+            border: 1px solid gray;
+            width: 30%;
+            color: palevioletred;
+            text-align: center;
+            background-color: #f1d2ed;
+            box-shadow: 5px 5px 5px gray;
+        }
+    </style>
 </head>
 <body>
     <header>
         ФБ, НГТУ, Лабораторная работа 7, Курс евро €
     </header>
     <main>
-        <button onclick="getEuroExschangeRate()"></button>
-        <div id="result" style="margin-top: 20px; padding: 10px; border: 1px solid gray;"></div>
+        <button onclick="getEuroExschangeRate()">Вывести текущий курс евро</button>
+        <div id="result"></div>
         <p style="margin-top: 10px;">
             <a href="https://www.cbr-xml-daily.ru/" target="_blank">Курсы валют, API</a>
         </p>

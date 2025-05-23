@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редкачева Дарина. Лабораторная 7</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <script>
+        function loadWeatherForToday() {
+            const apiURL = "https://api.open-meteo.com/v1/forecast?latitude=55.0415&longitude=82.9346&hourly=temperature_2m&timezone=Asia%2FBangkok";
+    
+            fetch(apiURL)
+            .then(resp => resp.json())
+            .then(data => {
+                const temps = data.hourly.temperature_2m;
+                const hours = data.hourly.time;
+    
+                const today = new Date().toISOString().slice(0, 10);
+    
+                const idx8 = hours.findIndex(t => t === `${today}T08:00`);
+                const idx12 = hours.findIndex(t => t === `${today}T12:00`);
+                const idx20 = hours.findIndex(t => t === `${today}T20:00`);
+    
+                const html = `
+                <div class="forecast-box">
+                    <h3>Температура в Новосибирске сегодня:</h3>
+                    <p>в 8:00 — <strong>${temps[idx8]?.toFixed(1)} °C</strong></p>
+                    <p>в 12:00 — <strong>${temps[idx12]?.toFixed(1)} °C</strong></p>
+                    <p>в 20:00 — <strong>${temps[idx20]?.toFixed(1)} °C</strong></p>
+                </div>
+                `;
+    
+                document.getElementById("forecast-result").innerHTML = html;
+                document.getElementById("btn").style.display = "none";
+            })
+            .catch(err => {
+                console.error("Ошибка:", err);
+                document.getElementById("forecast-result").innerHTML = "Не удалось загрузить данные прогноза.";
+            });
+        }
+    </script>
+    <style>
+        .forecast-box {
+          border: 2px dashed #ef0e68;
+          background-color: #eef6f9;
+          padding: 20px;
+          margin-top: 25px;
+          border-radius: 10px;
+          max-width: 420px;
+          color: #ec154f;
+          font-family: 'Segoe UI', sans-serif;
+          text-align: center;          
+        }
+        .btn-forecast {
+          background-color: #e695df;
+          border: none;
+          border-radius: 8px;
+          padding: 12px 24px;
+          font-size: 11pt;
+          color: #fff;
+          cursor: pointer;
+          transition: 0.3s;
+        }
+        .btn-forecast:hover {
+          background-color: #7dfc34;
+        }
+    
+      </style>
+</head>
+<body>
+    <header>
+        ФБ, НГТУ, Лабораторная работа 7, Прогноз погоды
+    </header>
+    <main>
+        <button id="btn" class="btn-forecast" onclick="loadWeatherForToday()">Показать температуру</button>
+        <div id="forecast-result"></div>
+        <p style="margin-top: 20px;">
+            <a href="https://api.open-meteo.com/v1/forecast?latitude=55.0415&longitude=82.9346&hourly" target="_blank">Источник данных: Open-Meteo</a>
+        </p>
+    </main>
+    <footer>
+        &copy; Редкачева Дарина, ФБИ-32, 2025
+    </footer>
+</body>
+</html>

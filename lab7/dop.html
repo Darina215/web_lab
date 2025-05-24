@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Редкачева. График температуры и влажности</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-16x16.png">
+    <link rel="icon" href="../favicon-32x32.png">
+    <script>
+        function loadWeather() {
+        const url = "https://api.open-meteo.com/v1/forecast?latitude=55.0415&longitude=82.9346&hourly=temperature_2m,relative_humidity_2m&current_weather=true&timezone=Asia%2FBangkok";
+    
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+            const temperatures = data.hourly.temperature_2m.slice(0, 24);
+            const humidity = data.hourly.relative_humidity_2m.slice(0, 24);
+            const timeLabels = data.hourly.time.slice(0, 24).map(t => t.slice(11, 16));
+    
+            const currentTemp = data.current_weather.temperature;
+            const currentTime = data.current_weather.time.slice(11, 16);
+            const currentHour = new Date(data.current_weather.time).getHours();
+            const currentHumidity = data.hourly.relative_humidity_2m[currentHour];
+            
+            const currentBox = document.getElementById("currentInfo");
+            currentBox.innerHTML = `
+                <h3>Текущие значения на ${currentTime}</h3>
+                <p>Температура: <strong>${currentTemp}°C</strong></p>
+                <p>Влажность: <strong>${currentHumidity}%</strong></p>
+            `;
+            currentBox.style.display = "block";
+    
+            new Chart(document.getElementById("tempChart"), {
+                type: "bar",
+                data: {
+                labels: timeLabels,
+                datasets: [{
+                    label: "Температура (°C)",
+                    data: temperatures,
+                    backgroundColor: "rgba(52, 152, 219, 0.6)",
+                    borderColor: "#3498db",
+                    borderWidth: 1
+                }]
+                },
+                options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                    display: true,
+                    text: "Температура в течение суток"
+                    },
+                    legend: {
+                    display: false
+                    }
+                },
+                scales: {
+                    y: {
+                    beginAtZero: true
+                    }
+                }
+                }
+            });
+    
+            new Chart(document.getElementById("humidityChart"), {
+                type: "bar",
+                data: {
+                labels: timeLabels,
+                datasets: [{
+                    label: "Влажность (%)",
+                    data: humidity,
+                    backgroundColor: "rgba(46, 204, 113, 0.6)",
+                    borderColor: "#2ecc71",
+                    borderWidth: 1
+                }]
+                },
+                options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                    display: true,
+                    text: "Влажность в течение суток"
+                    },
+                    legend: {
+                    display: false
+                    }
+                },
+                scales: {
+                    y: {
+                    beginAtZero: true
+                    }
+                }
+                }
+            });
+    
+            document.querySelector("button").style.display = "none";
+            })
+            .catch(error => {
+            alert("Произошла ошибка при загрузке данных.");
+            console.error("Ошибка:", error);
+            });
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+        }
+        .info-box {
+            margin: 20px auto;
+            padding: 15px;
+            border: 2px solid #007b9e;
+            border-radius: 10px;
+            background-color: #e6f2f5;
+            max-width: 500px;
+        }
+        canvas {
+            margin: 30px auto;
+            display: block;
+            max-width: 100%;
+        }
+        button {
+            display: block;
+            margin: 0 auto 20px auto;
+            padding: 10px 25px;
+            font-size: 16px;
+            background-color: #007b9e;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #005f76;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        ФБ, НГТУ, Лабораторная работа 7
+    </header>
+    <main>
+        <h1>Погода в Новосибирске</h1>
+        <button onclick="loadWeather()">Показать графики</button>
+        <div id="currentInfo" class="info-box" style="display:none;"></div>
+        <canvas id="tempChart"></canvas>
+        <canvas id="humidityChart"></canvas>
+    </main>
+    <footer>
+        &copy; Редкачева Дарина, ФБИ-32, 2025
+    </footer>
+</body>
+</html>
+

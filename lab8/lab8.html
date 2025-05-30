@@ -44,10 +44,16 @@
                                 <button @click="edit(id, flower)" class="btn btn-info btn-sm me-1">
                                     <i class="bi bi-pencil-fill"></i>
                                 </button>
+                                <button @click="removeFlower(id)" class="btn btn-pink btn-sm">
+                                    <i class="bi bi-trash"></i>
+                                </button>
                             </div>
                             <div class="spinner-border text-info" role="status" v-if="flower === null"></div>
                         </li>
                     </ul>
+                    <button @click="addFlower" class="btn btn-pink mt-3">
+                        <i class="bi bi-plus-circle"></i> Добавить цветок
+                    </button>
                 </div>
             </div>
             <hr>
@@ -79,16 +85,16 @@
     
             <h2><i class="bi bi-calculator"></i> Калькулятор</h2>
             <div class="row g-3 align-items-center">
-                <div class="col-auto">
+                <div class="col-auto" style="margin: 20px;">
                     <input type="number" v-model="a" class="form-control" placeholder="Введите A">
                 </div>
-                <div class="col-auto">
+                <div class="col-auto" style="margin: 20px;">
                     <strong>+</strong>
                 </div>
-                <div class="col-auto">
+                <div class="col-auto" style="margin: 20px;">
                     <input type="number" v-model="b" class="form-control" placeholder="Введите B">
                 </div>
-                <div class="col-auto">
+                <div class="col-auto" style="margin: 20px;">
                     <button @click="sum" class="btn btn-primary">
                         <i class="bi bi-equals">=</i>
                     </button>
@@ -133,6 +139,17 @@
                     setTimeout(() => {
                         this.flowers[id] = newName;
                     }, 3000);
+                },
+                removeFlower(id) {
+                if (confirm(`Удалить цветок "${this.flowers[id]}"?`)) {
+                    this.flowers.splice(id, 1);
+                    }
+                },
+                addFlower() {
+                    const newFlower = prompt('Введите название нового цветка:');
+                    if (newFlower) {
+                        this.flowers.push(newFlower);
+                    }
                 },
                 sum() {
                     this.result = this.a + this.b;
